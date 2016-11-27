@@ -1,6 +1,10 @@
 CHANGELOG
 ---------
 
+## 5.0.0
+
+* Breaking change to add support for Twilio PHP SDK version 5.
+
 ## 0.5.0
 
 * Added support for [Twilio Lookups Services](https://www.twilio.com/docs/api/lookups)

@@ -1,15 +1,15 @@
-#Symfony2 Twilio Bundle - by [Fridolin Koch](http://fkse.io)
-
-[![Build Status](https://travis-ci.org/fridolin-koch/BlackfordTwilioBundle.png?branch=master)](https://travis-ci.org/fridolin-koch/BlackfordTwilioBundle)
-
-[![Coverage Status](https://coveralls.io/repos/github/fridolin-koch/BlackfordTwilioBundle/badge.svg?branch=master)](https://coveralls.io/github/fridolin-koch/BlackfordTwilioBundle?branch=master)
-
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fridolin-koch/BlackfordTwilioBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fridolin-koch/BlackfordTwilioBundle/?branch=master)
+#Symfony Twilio Bundle (for PHP SDK v5)
 
 About
 -----
 
-This is just a wrapper for the [official SDK](https://github.com/twilio/twilio-php) provided by [Twilio](http://www.twilio.com/).
+A quick and easy way to use the Twilio SDK (version 5) in a Symfony based application.
+
+Support for PHP 5.6+, including PHP 7 and Symfony 2.8+, including Symfony 3.
+
+For full documentation about how to use the Twilio Client, see the [official SDK](https://github.com/twilio/twilio-php) provided by [Twilio](http://www.twilio.com/).
+
+Thank you for the awesome work of [Fridolin Koch](http://fkse.io) who created the first version of this bundle, with support for version 4 of the SDK.
 
 Installation
 ------------
@@ -18,10 +18,11 @@ Add this to your `composer.json` file:
 
 ```json
 "require": {
-	"blackford/twilio-bundle": "dev-master",
+	"blackford/twilio-bundle": "~5.0",
 }
 ```
 
+This will automatically include the `twilio/sdk` dependency into your project.
 
 Add the bundle to `app/AppKernel.php`
 
@@ -39,14 +40,17 @@ Add this to your `config.yml`:
 
 ```yaml
 blackford_twilio:
-    #(Required) Your Account SID from www.twilio.com/user/account
-    sid: 'XXXXXXXX'
-    #(Required) Your Auth Token from www.twilio.com/user/account
-    authToken: 'YYYYYYYY'
-    #(Optional, default: '2010-04-01') Twilio API version
-    version: '2010-04-01'
-    #(Optional, default: 1) Number of times to retry failed requests
-    retryAttempts: 3
+    # (Required) Username to authenticate with, typically your Account SID from www.twilio.com/user/account
+    username: 'TODO'
+    
+    # (Required) Password to authenticate with, typically your Auth Token from www.twilio.com/user/account
+    password: 'TODO'
+    
+    # (Optional) Account Sid to authenticate with, defaults to <username> (typically not required)
+    # accountSid: 
+    
+    # (Optional) Region to send requests to, defaults to no region selection (typically not required)
+    # region: 
 ```
 
 
@@ -57,31 +61,34 @@ Provided services:
 
 | Service             | Class                         |
 |---------------------|-------------------------------|
-| `twilio.api`        | `\Services_Twilio`            |
-| `twilio.capability` | `\Services_Twilio_Capability` |
-| `twilio.lookups`    | `\Lookups_Services_Twilio`    |
-
+| `twilio.client`     | `\Twilio\Rest\Client`         |
+|---------------------|-------------------------------|
 
 Inside a controller:
 
 ```php
-class TelephoneController extends Controller
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+use Twilio\Rest\Client;
+
+class TestController extends Controller
 {
-    public function callAction($me, $maybee)
+    public function smsAction()
     {
-        //returns an instance of Blackford\TwilioBundle\Service\TwilioWrapper
-    	$twilio = $this->get('twilio.api');
+        /** @var \Twilio\Rest\Client */
+    	$twilio = $this->get('twilio.client');
+        
+        $date = date('r');
+        
+        $message = $twilio->messages->create(
+            '+12125551234', // Text any number
+            array(
+                'from' => '+14085551234', // From a Twilio number in your account
+                'body' => "Hi there, it's $date and Twilio is working properly."
+            )
+        );
 
-        $message = $twilio->account->messages->sendMessage(
-	  '+14085551234', // From a Twilio number in your account
-	  '+12125551234', // Text any number
-	  "Hello monkey!"
-	);
-
-        //get an instance of \Service_Twilio
-        $otherInstance = $twilio->createInstance('BBBB', 'CCCCC');
-
-        return new Response($message->sid);
+        return new Response("Sent message [$message->sid] via Twilio.");
     }
 }
 ```
@@ -89,32 +96,37 @@ class TelephoneController extends Controller
 Inside a console command:
 
 ```php
-class SomeCommand extends ContainerAwareCommand
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Twilio\Rest\Client;
+
+class TwilioTestCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('some:comand')
-            ->setDescription('A command')
+            ->setName('twilio:test:sms')
+            ->setDescription('Test the Twilio integration by sending a text message.')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //returns an instance of Blackford\TwilioBundle\Service\TwilioWrapper
-        $twilio = $this->getContainer()->get('twilio.api');
-
-        $message = $twilio->account->messages->sendMessage(
-	  '+14085551234', // From a Twilio number in your account
-	  '+12125551234', // Text any number
-	  "Hello monkey!"
-	);
-
-        //get an instance of \Service_Twilio
-        $otherInstance = $twilio->createInstance('BBBB', 'CCCCC');
-
-        print $message->sid;
-
+        //** @var \Twilio\Rest\Client */
+        $twilio = $this->get('twilio.client');
+         
+         $date = date('r');
+         
+         $message = $twilio->messages->create(
+             '+12125551234', // Text any number
+             array(
+                 'from' => '+14085551234', // From a Twilio number in your account
+                 'body' => "Hi there, it's $date and Twilio is working properly."
+             )
+         );
+        
+        $output->writeln("Sent message [$message->sid] via Twilio.");
     }
 }
 ```
@@ -122,4 +134,4 @@ class SomeCommand extends ContainerAwareCommand
 Copyright / License
 -------------------
 
-See [LICENSE](https://github.com/fridolin-koch/BlackfordTwilioBundle/blob/master/LICENSE)
+See [LICENSE](LICENSE)
