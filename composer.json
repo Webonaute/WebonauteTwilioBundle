@@ -11,10 +11,6 @@
     {
       "name": "Matthew Blackford",
       "email": "matthew.blackford@gmail.com"
-    },
-    {
-      "name": "Fridolin Koch",
-      "email": "info@fridokoch.de"
     }
   ],
   "minimum-stability": "dev",
