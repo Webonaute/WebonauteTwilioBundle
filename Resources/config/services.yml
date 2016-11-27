@@ -1,12 +1,7 @@
-parameters:
-    twilio.class: Blackford\TwilioBundle\Service\TwilioWrapper
-    twilio.capability.class: Blackford\TwilioBundle\Service\TwilioCapabilityWrapper
-    twilio.lookups.class: Blackford\TwilioBundle\Service\TwilioLookupsWrapper
-
-services:
+ services:
     twilio.api:
-        class: '%twilio.class%'
+        class: Blackford\TwilioBundle\Service\TwilioWrapper
     twilio.capability:
-        class: '%twilio.capability.class%'
+        class: Blackford\TwilioBundle\Service\TwilioCapabilityWrapper
     twilio.lookups:
-        class: '%twilio.lookups.class%'
+        class: Blackford\TwilioBundle\Service\TwilioLookupsWrapper
