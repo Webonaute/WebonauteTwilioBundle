@@ -62,7 +62,7 @@ Provided services:
 | Service             | Class                         |
 |---------------------|-------------------------------|
 | `twilio.client`     | `\Twilio\Rest\Client`         |
-|---------------------|-------------------------------|
+
 
 Inside a controller:
 
