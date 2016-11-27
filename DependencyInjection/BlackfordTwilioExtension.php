@@ -28,16 +28,10 @@ class BlackfordTwilioExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
-        $container->getDefinition('twilio.api')
-            ->addArgument($config['sid'])
-            ->addArgument($config['authToken'])
-            ->addArgument($config['version'])
-            ->addArgument($config['retryAttempts']);
-        $container->getDefinition('twilio.capability')
-            ->addArgument($config['sid'])
-            ->addArgument($config['authToken']);
-        $container->getDefinition('twilio.lookups')
-            ->addArgument($config['sid'])
-            ->addArgument($config['authToken']);
+        $container->getDefinition('twilio.client')
+            ->addArgument($config['username'])
+            ->addArgument($config['password'])
+            ->addArgument($config['accountSid'])
+            ->addArgument($config['region']);
     }
 }

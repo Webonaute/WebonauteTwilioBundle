@@ -10,6 +10,7 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
+ * @author Matthew Blackford <matthew.blackford@gmail.com>
  * @author Fridolin Koch <info@fridokoch.de>
  */
 class Configuration implements ConfigurationInterface
@@ -17,7 +18,7 @@ class Configuration implements ConfigurationInterface
     /**
      * Generates the configuration tree.
      *
-     * @return \Symfony\Component\Config\Definition\NodeInterface
+     * @return TreeBuilder
      */
     public function getConfigTreeBuilder()
     {
@@ -26,10 +27,10 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('sid')->isRequired()->end()
-            ->scalarNode('authToken')->isRequired()->end()
-            ->scalarNode('version')->defaultValue('2010-04-01')->end()
-            ->scalarNode('retryAttempts')->defaultValue(1)->end()
+            ->scalarNode('username')->isRequired()->end()
+            ->scalarNode('password')->isRequired()->end()
+            ->scalarNode('accountSid')->defaultNull()->end()
+            ->scalarNode('region')->defaultNull()->end()
             ->end();
 
         return $treeBuilder;

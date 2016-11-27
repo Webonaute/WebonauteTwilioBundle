@@ -1,8 +1,10 @@
 <?php
 namespace Blackford\TwilioBundle\Tests\DependencyInjection;
 
-use Symfony\Component\Yaml\Parser;
 use Blackford\TwilioBundle\DependencyInjection\Configuration;
+use Symfony\Component\Config\Definition\ArrayNode;
+use Symfony\Component\Config\Definition\ScalarNode;
+
 /**
  * Test the configuration tree
  *
@@ -17,42 +19,24 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     public function testGetConfigTreeBuilder()
     {
         $config = new Configuration();
-        /** @var \Symfony\Component\Config\Definition\ArrayNode $node  */
-        $tree = $config->getConfigTreeBuilder()->buildTree();
-        //check root name
-        $this->assertEquals('twilio', $tree->getName());
-        //get child nodes and check them
-        /** @var \Symfony\Component\Config\Definition\ScalarNode[] $children  */
-        $children = $tree->getChildren();
-        //check length
-        $this->assertEquals(4, count($children));
-        //check if all config values are available
-        $this->assertArrayHasKey('sid', $children);
-        $this->assertArrayHasKey('authToken', $children);
-        $this->assertArrayHasKey('version', $children);
-        $this->assertArrayHasKey('retryAttempts', $children);
-    }
 
-    /**
-     * @test
-     */
-    public function testYamlFile()
-    {
-        $yaml = new Parser();
-        $config = $yaml->parse(file_get_contents(realpath(__DIR__ . '/../../Resources/config/services.yml')));
-        //validate config
-        $this->assertArrayHasKey('parameters', $config);
-        $this->assertArrayHasKey('services', $config);
-        $this->assertArrayHasKey('twilio.api', $config['services']);
-        $this->assertArrayHasKey('class', $config['services']['twilio.api']);
-        // capability test
-        $this->assertArrayHasKey('twilio.capability', $config['services']);
-        $this->assertArrayHasKey('class', $config['services']['twilio.capability']);
-        $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.capability']['class']), $config['parameters']);
-        $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.api']['class']), $config['parameters']);
-        // lookups
-        $this->assertArrayHasKey('twilio.lookups', $config['services']);
-        $this->assertArrayHasKey('class', $config['services']['twilio.lookups']);
-        $this->assertArrayHasKey(str_replace('%', '', $config['services']['twilio.lookups']['class']), $config['parameters']);
+        /** @var ArrayNode $tree */
+        $tree = $config->getConfigTreeBuilder()->buildTree();
+
+        // Check root name
+        $this->assertEquals('twilio', $tree->getName());
+
+        // Get child nodes and check them
+        /** @var ScalarNode[] $children  */
+        $children = $tree->getChildren();
+
+        // Check length
+        $this->assertEquals(4, count($children));
+
+        // Check if all config values are available
+        $this->assertArrayHasKey('username', $children);
+        $this->assertArrayHasKey('password', $children);
+        $this->assertArrayHasKey('accountSid', $children);
+        $this->assertArrayHasKey('region', $children);
     }
 }

@@ -1,7 +1,3 @@
  services:
-    twilio.api:
-        class: Blackford\TwilioBundle\Service\TwilioWrapper
-    twilio.capability:
-        class: Blackford\TwilioBundle\Service\TwilioCapabilityWrapper
-    twilio.lookups:
-        class: Blackford\TwilioBundle\Service\TwilioLookupsWrapper
+    twilio.client:
+        class: Twilio\Rest\Client

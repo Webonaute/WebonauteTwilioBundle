@@ -1,11 +1,11 @@
 {
   "name": "blackford/twilio-bundle",
   "type": "symfony-bundle",
-  "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
+  "description": "Symfony 3 / PHP 7 wrapper for the official Twilio SDK v5",
   "keywords": [
     "Twilio"
   ],
-  "homepage": "https://github.com/fridolin-koch/BlackfordTwilioBundle",
+  "homepage": "https://github.com/mblackford/BlackfordTwilioBundle",
   "license": "MIT",
   "authors": [
     {
