@@ -1,7 +1,7 @@
 parameters:
-    twilio.class: Vresh\TwilioBundle\Service\TwilioWrapper
-    twilio.capability.class: Vresh\TwilioBundle\Service\TwilioCapabilityWrapper
-    twilio.lookups.class: Vresh\TwilioBundle\Service\TwilioLookupsWrapper
+    twilio.class: Blackford\TwilioBundle\Service\TwilioWrapper
+    twilio.capability.class: Blackford\TwilioBundle\Service\TwilioCapabilityWrapper
+    twilio.lookups.class: Blackford\TwilioBundle\Service\TwilioLookupsWrapper
 
 services:
     twilio.api:

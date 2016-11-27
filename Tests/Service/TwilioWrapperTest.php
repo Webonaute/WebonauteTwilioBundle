@@ -1,9 +1,9 @@
 <?php
-namespace Vresh\TwilioBundle\Tests\DependencyInjection;
+namespace Blackford\TwilioBundle\Tests\DependencyInjection;
 
-use Vresh\TwilioBundle\Service\TwilioLookupsWrapper;
-use Vresh\TwilioBundle\Service\TwilioWrapper,
-    Vresh\TwilioBundle\Service\TwilioCapabilityWrapper;
+use Blackford\TwilioBundle\Service\TwilioLookupsWrapper;
+use Blackford\TwilioBundle\Service\TwilioWrapper,
+    Blackford\TwilioBundle\Service\TwilioCapabilityWrapper;
 
 /**
  * Test the TwilioWrapper
@@ -20,7 +20,7 @@ class TwilioWrapperTest extends \PHPUnit_Framework_TestCase
     {
         $twilio = new TwilioWrapper('AAAA', 'XXXX');
         //check if instance
-        $this->assertInstanceOf('Vresh\TwilioBundle\Service\TwilioWrapper', $twilio);
+        $this->assertInstanceOf('Blackford\TwilioBundle\Service\TwilioWrapper', $twilio);
     }
 
     /**

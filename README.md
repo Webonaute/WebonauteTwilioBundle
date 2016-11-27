@@ -1,10 +1,10 @@
 #Symfony2 Twilio Bundle - by [Fridolin Koch](http://fkse.io)
 
-[![Build Status](https://travis-ci.org/fridolin-koch/VreshTwilioBundle.png?branch=master)](https://travis-ci.org/fridolin-koch/VreshTwilioBundle)
+[![Build Status](https://travis-ci.org/fridolin-koch/BlackfordTwilioBundle.png?branch=master)](https://travis-ci.org/fridolin-koch/BlackfordTwilioBundle)
 
-[![Coverage Status](https://coveralls.io/repos/github/fridolin-koch/VreshTwilioBundle/badge.svg?branch=master)](https://coveralls.io/github/fridolin-koch/VreshTwilioBundle?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/fridolin-koch/BlackfordTwilioBundle/badge.svg?branch=master)](https://coveralls.io/github/fridolin-koch/BlackfordTwilioBundle?branch=master)
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fridolin-koch/VreshTwilioBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fridolin-koch/VreshTwilioBundle/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/fridolin-koch/BlackfordTwilioBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/fridolin-koch/BlackfordTwilioBundle/?branch=master)
 
 About
 -----
@@ -18,7 +18,7 @@ Add this to your `composer.json` file:
 
 ```json
 "require": {
-	"vresh/twilio-bundle": "dev-master",
+	"blackford/twilio-bundle": "dev-master",
 }
 ```
 
@@ -28,7 +28,7 @@ Add the bundle to `app/AppKernel.php`
 ```php
 $bundles = array(
 	// ... other bundles
-	new Vresh\TwilioBundle\VreshTwilioBundle(),
+	new Blackford\TwilioBundle\BlackfordTwilioBundle(),
 );
 ```
 
@@ -38,7 +38,7 @@ Configuration
 Add this to your `config.yml`:
 
 ```yaml
-vresh_twilio:
+blackford_twilio:
     #(Required) Your Account SID from www.twilio.com/user/account
     sid: 'XXXXXXXX'
     #(Required) Your Auth Token from www.twilio.com/user/account
@@ -69,7 +69,7 @@ class TelephoneController extends Controller
 {
     public function callAction($me, $maybee)
     {
-        //returns an instance of Vresh\TwilioBundle\Service\TwilioWrapper
+        //returns an instance of Blackford\TwilioBundle\Service\TwilioWrapper
     	$twilio = $this->get('twilio.api');
 
         $message = $twilio->account->messages->sendMessage(
@@ -101,7 +101,7 @@ class SomeCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        //returns an instance of Vresh\TwilioBundle\Service\TwilioWrapper
+        //returns an instance of Blackford\TwilioBundle\Service\TwilioWrapper
         $twilio = $this->getContainer()->get('twilio.api');
 
         $message = $twilio->account->messages->sendMessage(
@@ -122,4 +122,4 @@ class SomeCommand extends ContainerAwareCommand
 Copyright / License
 -------------------
 
-See [LICENSE](https://github.com/fridolin-koch/VreshTwilioBundle/blob/master/LICENSE)
+See [LICENSE](https://github.com/fridolin-koch/BlackfordTwilioBundle/blob/master/LICENSE)

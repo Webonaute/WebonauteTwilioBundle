@@ -1,11 +1,11 @@
 {
-  "name": "vresh/twilio-bundle",
+  "name": "blackford/twilio-bundle",
   "type": "symfony-bundle",
   "description": "A simple Symfony 2, 3 bundle for the official sdk provided by Twilio.",
   "keywords": [
     "Twilio"
   ],
-  "homepage": "https://github.com/fridolin-koch/VreshTwilioBundle",
+  "homepage": "https://github.com/fridolin-koch/BlackfordTwilioBundle",
   "license": "MIT",
   "authors": [
     {
@@ -29,7 +29,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Vresh\\TwilioBundle\\": ""
+      "Blackford\\TwilioBundle\\": ""
     }
   }
 }

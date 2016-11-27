@@ -1,8 +1,8 @@
 <?php
-namespace Vresh\TwilioBundle\Tests\DependencyInjection;
+namespace Blackford\TwilioBundle\Tests\DependencyInjection;
 
 use Symfony\Component\Yaml\Parser;
-use Vresh\TwilioBundle\DependencyInjection\Configuration;
+use Blackford\TwilioBundle\DependencyInjection\Configuration;
 /**
  * Test the configuration tree
  *
