@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace Webonaute\TwilioBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;

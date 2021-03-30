@@ -3,7 +3,7 @@
 About
 -----
 
-A quick and easy way to use the Twilio SDK (version 5) in a Symfony based application.
+A quick and easy way to use the Twilio SDK (version 6) in a Symfony based application.
 
 Support for PHP 7.4+ and Symfony 5.x
 
