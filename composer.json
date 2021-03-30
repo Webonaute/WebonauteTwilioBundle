@@ -1,5 +1,5 @@
 {
-  "name": "blackford/twilio-bundle",
+  "name": "webonaute/twilio-bundle",
   "type": "symfony-bundle",
   "description": "Symfony 3 / PHP 7 wrapper for the official Twilio SDK v5",
   "keywords": [
