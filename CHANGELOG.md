@@ -1,5 +1,7 @@
 CHANGELOG
 ---------
+## 6.0.0
+* Add support for Twilio PHP SDK version 6.
 
 ## 5.0.0
 

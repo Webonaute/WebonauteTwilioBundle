@@ -27,7 +27,7 @@
     </logging>
 
     <testsuites>
-        <testsuite name="BlackfordTwilioBundle Test Suite">
+        <testsuite name="WebonauteTwilioBundle Test Suite">
             <directory>./Tests</directory>
         </testsuite>
     </testsuites>

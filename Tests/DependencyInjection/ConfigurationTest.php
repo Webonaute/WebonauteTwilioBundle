@@ -1,7 +1,8 @@
 <?php
-namespace Blackford\TwilioBundle\Tests\DependencyInjection;
+namespace Webonaute\TwilioBundle\Tests\DependencyInjection;
 
-use Blackford\TwilioBundle\DependencyInjection\Configuration;
+use PHPUnit\Framework\TestCase;
+use Webonaute\TwilioBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\ArrayNode;
 use Symfony\Component\Config\Definition\ScalarNode;
 
@@ -11,11 +12,8 @@ use Symfony\Component\Config\Definition\ScalarNode;
  * @author Fridolin Koch <info@fridokoch.de>
  *
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase
+class ConfigurationTest extends TestCase
 {
-    /**
-     * @test
-     */
     public function testGetConfigTreeBuilder()
     {
         $config = new Configuration();

@@ -1,13 +1,17 @@
 {
   "name": "webonaute/twilio-bundle",
   "type": "symfony-bundle",
-  "description": "Symfony 3 / PHP 7 wrapper for the official Twilio SDK v5",
+  "description": "Symfony 5 / PHP 7 wrapper for the official Twilio SDK v6",
   "keywords": [
     "Twilio"
   ],
-  "homepage": "https://github.com/mblackford/BlackfordTwilioBundle",
+  "homepage": "https://github.com/Webonaute/WebonauteTwilioBundle",
   "license": "MIT",
   "authors": [
+    {
+      "name": "Mathieu Delisle",
+      "email": "mdelisle@webonaute.ca"
+    },
     {
       "name": "Matthew Blackford",
       "email": "matthew.blackford@gmail.com"
@@ -16,16 +20,15 @@
   "minimum-stability": "dev",
   "require": {
     "php": ">=7.4",
-    "symfony/framework-bundle": ">=2.8",
+    "symfony/dependency-injection": "^5.0",
     "twilio/sdk": "^6.0"
   },
   "require-dev": {
-    "phpunit/phpunit": "~4.1",
-    "satooshi/php-coveralls": "~1.0"
+    "phpunit/phpunit": "~9.0"
   },
   "autoload": {
     "psr-4": {
-      "Blackford\\TwilioBundle\\": ""
+      "Webonaute\\TwilioBundle\\": ""
     }
   }
 }

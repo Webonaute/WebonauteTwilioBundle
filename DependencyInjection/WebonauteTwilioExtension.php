@@ -1,5 +1,5 @@
 <?php
-namespace Blackford\TwilioBundle\DependencyInjection;
+namespace Webonaute\TwilioBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
@@ -14,7 +14,7 @@ use Symfony\Component\Config\FileLocator;
  *
  * @author Fridolin Koch <info@fridokoch.de>
  */
-class BlackfordTwilioExtension extends Extension
+class WebonauteTwilioExtension extends Extension
 {
     /**
      * @param array            $configs

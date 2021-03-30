@@ -5,10 +5,11 @@ About
 
 A quick and easy way to use the Twilio SDK (version 5) in a Symfony based application.
 
-Support for PHP 5.6+, including PHP 7 and Symfony 2.8+, including Symfony 3.
+Support for PHP 7.4+ and Symfony 5.x
 
 For full documentation about how to use the Twilio Client, see the [official SDK](https://github.com/twilio/twilio-php) provided by [Twilio](http://www.twilio.com/).
 
+Thank you for the awesome work of [mblackford](https://github.com/mblackford/BlackfordTwilioBundle) who created the version of this bundle, with support for version 5 of the SDK.
 Thank you for the awesome work of [Fridolin Koch](http://fkse.io) who created the first version of this bundle, with support for version 4 of the SDK.
 
 Installation
@@ -18,7 +19,7 @@ Add this to your `composer.json` file:
 
 ```json
 "require": {
-	"blackford/twilio-bundle": "~5.0",
+	"webonaute/twilio-bundle": "~6.0",
 }
 ```
 
@@ -29,7 +30,7 @@ Add the bundle to `app/AppKernel.php`
 ```php
 $bundles = array(
 	// ... other bundles
-	new Blackford\TwilioBundle\BlackfordTwilioBundle(),
+	new Webonaute\TwilioBundle\WebonauteTwilioBundle(),
 );
 ```
 
